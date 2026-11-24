@@ -48,6 +48,8 @@ export default function Dashboard() {
                             <th className="p-4">Category</th>
                             <th className="p-4">Date</th>
                             <th className="p-4">Payment Method</th>
+                            <th className="p-4">Actions</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -58,6 +60,12 @@ export default function Dashboard() {
                                 <td className="p-4">{item.category}</td>
                                 <td className="p-4">{item.expenseDate?.slice(0, 10)}</td>
                                 <td className="p-4">{item.paymentMethod}</td>
+                                <td>
+                                    <div className="flex gap-3">
+                                        <Link href={'/dashboard/edit'} className="bg-red-600 text-white p-2 rounded hover:bg-red-700">Edit</Link>
+                                        <button className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Delete</button>
+                                    </div>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
