@@ -20,7 +20,7 @@ export default function Dashboard() {
     const getExpenses = async () => {
         try {
             const res = await axios.get('/api/expenses')
-            setExpenses(res.data)
+            setExpenses(res.data.data.allExpenses)
         }
         catch (err) {
             console.log(err)
@@ -56,7 +56,7 @@ export default function Dashboard() {
                                 <td className="p-4">{item.title}</td>
                                 <td className="p-4">₹{item.amount}</td>
                                 <td className="p-4">{item.category}</td>
-                                <td className="p-4">{item.expenseDate}</td>
+                                <td className="p-4">{item.expenseDate?.slice(0, 10)}</td>
                                 <td className="p-4">{item.paymentMethod}</td>
                             </tr>
                         ))}
