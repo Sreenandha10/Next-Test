@@ -12,7 +12,8 @@ export default function Add() {
 
     const router=useRouter()
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
         try {
             await axios.post('/api/expenses', expense)
             toast.success("Expense added successfully")
@@ -49,7 +50,7 @@ toast.error("Error adding expense")
                 <div>
                     <input value={expense.paymentMethod} onChange={(e) => setExpense({ ...expense, paymentMethod: e.target.value })} type="text" placeholder="Payment method" required className="w-full border p-3 rounded" />
                 </div>
-                <button onClick={handleSubmit} className="text-white bg-blue-600 p-2 w-full">Add Expense</button>
+                <button onSubmit={handleSubmit} className="text-white bg-blue-600 p-2 w-full">Add Expense</button>
             </form>
 
 
